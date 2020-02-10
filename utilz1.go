@@ -1,3 +1,5 @@
+// Package utilz - package for utilities
+
 package utilz
 
 import (
@@ -12,9 +14,12 @@ var (
 	logger   = log.New(&buf, "logger: ", log.Lshortfile)
 	stackBuf []byte
 )
-
+// PrintMsg - a message
+func PrintMsg() {
+	fmt.Printf(" hello\n")
+}
 // Check - check err return; print err msg; and exit if necessary
-func Check(e error ,es string,ex bool) {
+func  Check(e error ,es string,ex bool) {
 	if e != nil && ex {
 		//log.Fatalf("%s  %s", err, errStr)
 		// os.Exit(1) will be called here
@@ -27,13 +32,12 @@ func Check(e error ,es string,ex bool) {
 }
  
 // PrintStack - print caller's  stack  
-func PrintStack(s string)  {  
-
+// this func is already provided in "runtime/debug"j
+func printStack(s string)  {  
 	if len(s) != 0 {  
 		fmt.Printf("PrintStack msg:  %s\n", s) 
 	}
 	runtime.Stack(stackBuf, true)
 
 	fmt.Printf("stack: %s\n", stackBuf)
-
 }
