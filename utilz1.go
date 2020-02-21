@@ -14,10 +14,7 @@ var (
 	logger   = log.New(&buf, "logger: ", log.Lshortfile)
 	stackBuf []byte
 )
-// PrintMsg - a message
-func PrintMsg() {
-	fmt.Printf(" hello\n")
-}
+
 // Check - check err return; print err msg; and exit if necessary
 func  Check(e error ,es string,ex bool) {
 	if e != nil && ex {
@@ -30,14 +27,4 @@ func  Check(e error ,es string,ex bool) {
 		log.Printf("non fatal %s %s", e, es)
 	}
 }
- 
-// PrintStack - print caller's  stack  
-// this func is already provided in "runtime/debug"j
-func printStack(s string)  {  
-	if len(s) != 0 {  
-		fmt.Printf("PrintStack msg:  %s\n", s) 
-	}
-	runtime.Stack(stackBuf, true)
 
-	fmt.Printf("stack: %s\n", stackBuf)
-}
